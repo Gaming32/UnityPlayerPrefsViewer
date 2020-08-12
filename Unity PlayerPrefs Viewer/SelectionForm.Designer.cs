@@ -35,6 +35,8 @@
             this.ProductName = new System.Windows.Forms.TextBox();
             this.DiscoverButton = new System.Windows.Forms.Button();
             this.DiscoveredSoftware = new System.Windows.Forms.ListBox();
+            this.ClearDiscoveredSoftware = new System.Windows.Forms.Button();
+            this.DisableCheck = new System.Windows.Forms.CheckBox();
             this.InfoTable.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,7 +74,8 @@
             this.InfoTable.Controls.Add(this.ProductNameLabel, 0, 1);
             this.InfoTable.Controls.Add(this.CompanyName, 1, 0);
             this.InfoTable.Controls.Add(this.ProductName, 1, 1);
-            this.InfoTable.Controls.Add(this.DiscoverButton, 1, 2);
+            this.InfoTable.Controls.Add(this.DisableCheck, 0, 2);
+            this.InfoTable.Controls.Add(this.DiscoverButton, 1, 3);
             this.InfoTable.Location = new System.Drawing.Point(12, 12);
             this.InfoTable.Name = "InfoTable";
             this.InfoTable.RowCount = 1;
@@ -80,7 +83,8 @@
             this.InfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.InfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.InfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.InfoTable.Size = new System.Drawing.Size(713, 99);
+            this.InfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.InfoTable.Size = new System.Drawing.Size(714, 122);
             this.InfoTable.TabIndex = 2;
             // 
             // CompanyName
@@ -88,7 +92,7 @@
             this.CompanyName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.CompanyName.Location = new System.Drawing.Point(91, 7);
             this.CompanyName.Name = "CompanyName";
-            this.CompanyName.Size = new System.Drawing.Size(619, 20);
+            this.CompanyName.Size = new System.Drawing.Size(620, 20);
             this.CompanyName.TabIndex = 2;
             // 
             // ProductName
@@ -96,34 +100,59 @@
             this.ProductName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.ProductName.Location = new System.Drawing.Point(91, 42);
             this.ProductName.Name = "ProductName";
-            this.ProductName.Size = new System.Drawing.Size(619, 20);
+            this.ProductName.Size = new System.Drawing.Size(620, 20);
             this.ProductName.TabIndex = 3;
             // 
             // DiscoverButton
             // 
             this.DiscoverButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.InfoTable.SetColumnSpan(this.DiscoverButton, 2);
-            this.DiscoverButton.Location = new System.Drawing.Point(285, 73);
+            this.DiscoverButton.Location = new System.Drawing.Point(286, 96);
             this.DiscoverButton.Name = "DiscoverButton";
             this.DiscoverButton.Size = new System.Drawing.Size(142, 23);
             this.DiscoverButton.TabIndex = 4;
             this.DiscoverButton.Text = "Discover";
             this.DiscoverButton.UseVisualStyleBackColor = true;
+            this.DiscoverButton.Click += new System.EventHandler(this.DiscoverButton_Click);
             // 
             // DiscoveredSoftware
             // 
             this.DiscoveredSoftware.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DiscoveredSoftware.Location = new System.Drawing.Point(12, 168);
+            this.DiscoveredSoftware.Location = new System.Drawing.Point(12, 212);
             this.DiscoveredSoftware.Name = "DiscoveredSoftware";
-            this.DiscoveredSoftware.Size = new System.Drawing.Size(713, 238);
+            this.DiscoveredSoftware.Size = new System.Drawing.Size(714, 173);
             this.DiscoveredSoftware.TabIndex = 3;
+            // 
+            // ClearDiscoveredSoftware
+            // 
+            this.ClearDiscoveredSoftware.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.ClearDiscoveredSoftware.Location = new System.Drawing.Point(298, 391);
+            this.ClearDiscoveredSoftware.Name = "ClearDiscoveredSoftware";
+            this.ClearDiscoveredSoftware.Size = new System.Drawing.Size(150, 23);
+            this.ClearDiscoveredSoftware.TabIndex = 4;
+            this.ClearDiscoveredSoftware.Text = "Clear List";
+            this.ClearDiscoveredSoftware.UseVisualStyleBackColor = true;
+            this.ClearDiscoveredSoftware.Click += new System.EventHandler(this.ClearDiscoveredSoftware_Click);
+            // 
+            // DisableCheck
+            // 
+            this.DisableCheck.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.DisableCheck.AutoSize = true;
+            this.InfoTable.SetColumnSpan(this.DisableCheck, 2);
+            this.DisableCheck.Location = new System.Drawing.Point(281, 73);
+            this.DisableCheck.Name = "DisableCheck";
+            this.DisableCheck.Size = new System.Drawing.Size(151, 17);
+            this.DisableCheck.TabIndex = 5;
+            this.DisableCheck.Text = "Disable PlayerPrefs Check";
+            this.DisableCheck.UseVisualStyleBackColor = true;
             // 
             // SelectionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(737, 426);
+            this.ClientSize = new System.Drawing.Size(738, 426);
+            this.Controls.Add(this.ClearDiscoveredSoftware);
             this.Controls.Add(this.DiscoveredSoftware);
             this.Controls.Add(this.InfoTable);
             this.Name = "SelectionForm";
@@ -144,6 +173,8 @@
         private System.Windows.Forms.TextBox ProductName;
         private System.Windows.Forms.ListBox DiscoveredSoftware;
         private System.Windows.Forms.Button DiscoverButton;
+        private System.Windows.Forms.Button ClearDiscoveredSoftware;
+        private System.Windows.Forms.CheckBox DisableCheck;
     }
 }
 
