@@ -1,0 +1,9 @@
+C:\Users\josia\MEGA\Projects\Other\UnityPlayerPrefsViewer\Unity PlayerPrefs Viewer\bin\Debug\Unity PlayerPrefs Viewer.exe
+C:\Users\josia\MEGA\Projects\Other\UnityPlayerPrefsViewer\Unity PlayerPrefs Viewer\bin\Debug\Unity PlayerPrefs Viewer.pdb
+C:\Users\josia\MEGA\Projects\Other\UnityPlayerPrefsViewer\Unity PlayerPrefs Viewer\obj\Debug\Unity PlayerPrefs Viewer.csprojAssemblyReference.cache
+C:\Users\josia\MEGA\Projects\Other\UnityPlayerPrefsViewer\Unity PlayerPrefs Viewer\obj\Debug\Unity_PlayerPrefs_Viewer.Properties.Resources.resources
+C:\Users\josia\MEGA\Projects\Other\UnityPlayerPrefsViewer\Unity PlayerPrefs Viewer\obj\Debug\Unity PlayerPrefs Viewer.csproj.GenerateResource.cache
+C:\Users\josia\MEGA\Projects\Other\UnityPlayerPrefsViewer\Unity PlayerPrefs Viewer\obj\Debug\Unity PlayerPrefs Viewer.csproj.CoreCompileInputs.cache
+C:\Users\josia\MEGA\Projects\Other\UnityPlayerPrefsViewer\Unity PlayerPrefs Viewer\obj\Debug\Unity PlayerPrefs Viewer.exe
+C:\Users\josia\MEGA\Projects\Other\UnityPlayerPrefsViewer\Unity PlayerPrefs Viewer\obj\Debug\Unity PlayerPrefs Viewer.pdb
+C:\Users\josia\MEGA\Projects\Other\UnityPlayerPrefsViewer\Unity PlayerPrefs Viewer\obj\Debug\Unity_PlayerPrefs_Viewer.SelectionForm.resources
