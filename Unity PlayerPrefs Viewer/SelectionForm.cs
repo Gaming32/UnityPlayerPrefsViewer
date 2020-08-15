@@ -83,5 +83,20 @@ namespace Unity_PlayerPrefs_Viewer
             DiscoveredSoftware.Items.Clear();
             File.WriteAllText(discoveredSoftwareFilePath, "");
         }
+
+        private void OpenNewWindow(object sender, EventArgs e)
+        {
+            string destination = ((ListBox)sender).SelectedItem.ToString();
+            Debug.WriteLine(destination);
+            new ViewForm(destination).Show();
+        }
+
+        private void DiscoveredSoftware_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == char.ConvertFromUtf32(13)[0])
+            {
+                OpenNewWindow(sender, e);
+            }
+        }
     }
 }

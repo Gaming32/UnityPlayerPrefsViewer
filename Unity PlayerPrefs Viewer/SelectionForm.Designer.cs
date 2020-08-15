@@ -123,6 +123,8 @@
             this.DiscoveredSoftware.Name = "DiscoveredSoftware";
             this.DiscoveredSoftware.Size = new System.Drawing.Size(714, 173);
             this.DiscoveredSoftware.TabIndex = 3;
+            this.DiscoveredSoftware.DoubleClick += new System.EventHandler(this.OpenNewWindow);
+            this.DiscoveredSoftware.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DiscoveredSoftware_KeyPress);
             // 
             // ClearDiscoveredSoftware
             // 

@@ -7,3 +7,4 @@ C:\Users\josia\MEGA\Projects\Other\UnityPlayerPrefsViewer\Unity PlayerPrefs View
 C:\Users\josia\MEGA\Projects\Other\UnityPlayerPrefsViewer\Unity PlayerPrefs Viewer\obj\Debug\Unity PlayerPrefs Viewer.exe
 C:\Users\josia\MEGA\Projects\Other\UnityPlayerPrefsViewer\Unity PlayerPrefs Viewer\obj\Debug\Unity PlayerPrefs Viewer.pdb
 C:\Users\josia\MEGA\Projects\Other\UnityPlayerPrefsViewer\Unity PlayerPrefs Viewer\obj\Debug\Unity_PlayerPrefs_Viewer.SelectionForm.resources
+C:\Users\josia\MEGA\Projects\Other\UnityPlayerPrefsViewer\Unity PlayerPrefs Viewer\obj\Debug\Unity_PlayerPrefs_Viewer.ViewForm.resources
