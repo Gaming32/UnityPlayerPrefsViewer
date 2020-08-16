@@ -33,6 +33,11 @@ namespace Unity_PlayerPrefs_Viewer
             InitializeComponent();
         }
 
+        private void PlayerPrefsGrid_RowValidated(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
         private void ViewForm_Load(object sender, EventArgs e)
         {
             Text = "Editing PlayerPrefs for " + path;
@@ -49,8 +54,37 @@ namespace Unity_PlayerPrefs_Viewer
                     {
                         DataGridViewRow row = new DataGridViewRow();
                         row.CreateCells(PlayerPrefsGrid);
+
                         row.Cells[0].Value = valueName;
+                        row.Cells[0].ReadOnly = true;
+
                         row.Cells[1].Value = valueNameMatch.Groups[1];
+                        row.Cells[1].ReadOnly = true;
+
+                        object value = productKey.GetValue(valueName);
+                        RegistryValueKind valueKind = productKey.GetValueKind(valueName);
+                        if (valueKind == RegistryValueKind.Binary)
+                        {
+                            row.Cells[2].Value = "String (string)";
+                            row.Cells[5].Value = Encoding.UTF8.GetString((byte[])value);
+                        }
+                        else
+                        {
+                            try
+                            {
+                                long longValue = (long)value;
+                                row.Cells[4].Value = BitConverter.Int64BitsToDouble(longValue);
+                                row.Cells[2].Value = "Float (float)";
+                            }
+                            catch (InvalidCastException)
+                            {
+                                int intValue = (int)value;
+                                row.Cells[3].Value = intValue;
+                                row.Cells[2].Value = "Integer (int)";
+                            }
+                        }
+
+
                         PlayerPrefsGrid.Rows.Add(row);
                     }
                 }

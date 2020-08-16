@@ -58,6 +58,7 @@
             this.PlayerPrefsGrid.Name = "PlayerPrefsGrid";
             this.PlayerPrefsGrid.Size = new System.Drawing.Size(643, 278);
             this.PlayerPrefsGrid.TabIndex = 1;
+            this.PlayerPrefsGrid.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.PlayerPrefsGrid_RowValidated);
             // 
             // IDColumn
             // 
@@ -69,7 +70,6 @@
             // 
             this.NameColumn.HeaderText = "Name";
             this.NameColumn.Name = "NameColumn";
-            this.NameColumn.ReadOnly = true;
             // 
             // TypeColumn
             // 
