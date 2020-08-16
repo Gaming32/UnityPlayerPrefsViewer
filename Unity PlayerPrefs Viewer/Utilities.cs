@@ -9,6 +9,8 @@ namespace Unity_PlayerPrefs_Viewer
 {
     class Utilities
     {
+        public static readonly Random random = new Random();
+
         [DllImport("advapi32.dll")]
         static extern uint RegSetValueEx(
             UIntPtr hKey,

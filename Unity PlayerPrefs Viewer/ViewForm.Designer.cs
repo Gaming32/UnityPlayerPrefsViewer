@@ -32,8 +32,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PlayerPrefsGrid = new System.Windows.Forms.DataGridView();
-            this.IDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HashColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TypeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.IntegerValueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FloatValueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,8 +48,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PlayerPrefsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PlayerPrefsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IDColumn,
             this.NameColumn,
+            this.HashColumn,
             this.TypeColumn,
             this.IntegerValueColumn,
             this.FloatValueColumn,
@@ -60,17 +60,19 @@
             this.PlayerPrefsGrid.TabIndex = 1;
             this.PlayerPrefsGrid.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.PlayerPrefsGrid_CellValidated);
             this.PlayerPrefsGrid.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.PlayerPrefsGrid_CellValidating);
-            // 
-            // IDColumn
-            // 
-            this.IDColumn.HeaderText = "ID";
-            this.IDColumn.Name = "IDColumn";
-            this.IDColumn.ReadOnly = true;
+            this.PlayerPrefsGrid.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.PlayerPrefsGrid_UserDeletedRow);
             // 
             // NameColumn
             // 
             this.NameColumn.HeaderText = "Name";
             this.NameColumn.Name = "NameColumn";
+            this.NameColumn.ReadOnly = true;
+            // 
+            // HashColumn
+            // 
+            this.HashColumn.HeaderText = "Hash";
+            this.HashColumn.Name = "HashColumn";
+            this.HashColumn.ReadOnly = true;
             // 
             // TypeColumn
             // 
@@ -120,8 +122,8 @@
 
         #endregion
         private System.Windows.Forms.DataGridView PlayerPrefsGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HashColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn TypeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn IntegerValueColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn FloatValueColumn;

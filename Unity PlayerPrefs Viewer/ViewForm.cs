@@ -17,10 +17,11 @@ namespace Unity_PlayerPrefs_Viewer
     {
         public string path;
         public string productName, companyName;
-        public static readonly Regex keyRegex = new Regex(@"^(.*)_h\d+$");
+        public static readonly Regex keyRegex = new Regex(@"^(.*)_h(\d+)$");
 
-        private RegistryKey productKey;
+        RegistryKey productKey;
         object previousValue;
+        const string numbers = "0123456789";
 
         public ViewForm(string path)
         {
@@ -39,12 +40,29 @@ namespace Unity_PlayerPrefs_Viewer
             InitializeComponent();
         }
 
+        private string GetKeyName(DataGridViewRow row)
+        {
+            return GetKeyName(row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString());
+        }
+
+        private string GetKeyName(string name, string hash)
+        {
+            return name + "_h" + hash;
+        }
+
         private void PlayerPrefsGrid_CellValidated(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = PlayerPrefsGrid.Rows[e.RowIndex];
             if (row.Cells[e.ColumnIndex].Value == previousValue)
                 return;
 
+            //if (e.ColumnIndex == 1)
+            //{
+            //    productKey.DeleteValue(row.Cells[0].Value.ToString(), false);
+            //    row.Cells[0].Value = row.Cells[1].Value.ToString() + "_h" + 
+            //        new string(Enumerable.Repeat(numbers, 10)
+            //        .Select(s => s[Utilities.random.Next(s.Length)]).ToArray());
+            //}
             if (e.ColumnIndex == 3)
             {
                 row.Cells[2].Value = "Integer (int)";
@@ -82,7 +100,7 @@ namespace Unity_PlayerPrefs_Viewer
                                 break;
                             }
                         }
-                        productKey.SetValue((string)row.Cells[0].Value, intValue, RegistryValueKind.DWord);
+                        productKey.SetValue(GetKeyName(row), intValue, RegistryValueKind.DWord);
                         break;
                     case "Float (float)":
                         double floatValue;
@@ -104,7 +122,7 @@ namespace Unity_PlayerPrefs_Viewer
                                 break;
                             }
                         }
-                        int error = Utilities.SetNamedValue($"SOFTWARE\\{companyName}\\{productName}", (string)row.Cells[0].Value, floatValue);
+                        int error = Utilities.SetNamedValue($"SOFTWARE\\{companyName}\\{productName}", GetKeyName(row), floatValue);
                         if (error != 0)
                         {
                             MessageBox.Show($"Could not write PlayerPrefs float to registry. (Error code {error})",
@@ -115,7 +133,7 @@ namespace Unity_PlayerPrefs_Viewer
                         }
                         break;
                     case "String (string)":
-                        productKey.SetValue((string)row.Cells[0].Value, Encoding.UTF8.GetBytes(row.Cells[5].Value.ToString()), RegistryValueKind.Binary);
+                        productKey.SetValue(GetKeyName(row), Encoding.UTF8.GetBytes(row.Cells[5].Value.ToString()), RegistryValueKind.Binary);
                         break;
                 }
             }
@@ -124,6 +142,14 @@ namespace Unity_PlayerPrefs_Viewer
         private void PlayerPrefsGrid_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             previousValue = ((DataGridView)sender).Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+        }
+
+        private void PlayerPrefsGrid_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            if (Environment.OSVersion.Platform == PlatformID.Win32NT)
+            {
+                productKey.DeleteValue(GetKeyName(e.Row));
+            }
         }
 
         private void ViewForm_Load(object sender, EventArgs e)
@@ -139,11 +165,8 @@ namespace Unity_PlayerPrefs_Viewer
                         DataGridViewRow row = new DataGridViewRow();
                         row.CreateCells(PlayerPrefsGrid);
 
-                        row.Cells[0].Value = valueName;
-                        row.Cells[0].ReadOnly = true;
-
-                        row.Cells[1].Value = valueNameMatch.Groups[1];
-                        row.Cells[1].ReadOnly = true;
+                        row.Cells[0].Value = valueNameMatch.Groups[1];
+                        row.Cells[1].Value = valueNameMatch.Groups[2];
 
                         object value = productKey.GetValue(valueName);
                         RegistryValueKind valueKind = productKey.GetValueKind(valueName);
