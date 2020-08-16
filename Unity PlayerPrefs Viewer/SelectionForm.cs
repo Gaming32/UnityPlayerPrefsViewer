@@ -60,7 +60,7 @@ namespace Unity_PlayerPrefs_Viewer
                         {
                             foreach (string valueName in productKey.GetValueNames())
                             {
-                                if (valueName.StartsWith("UnitySelectMonitor_h"))
+                                if (valueName.StartsWith("unity.cloud_userid_h"))
                                 {
                                     valid = true;
                                     break;
